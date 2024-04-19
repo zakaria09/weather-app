@@ -4,41 +4,36 @@ import WeatherForm from './components/WeatherForm';
 import {useQuery} from '@tanstack/react-query';
 import {getCoordinates, getWeather} from './api/weather';
 import {isSameDay, parseISO} from 'date-fns';
-import {CityForecast, DisplayForecast} from './types/weather.types';
+import {
+  CityForecast,
+  DisplayForecast,
+  coordinates,
+} from './types/weather.types';
 import Weather from './components/Weather';
 import WeeklyForecast from './components/Forecast';
 
+const getWeatherForecast = async (city: string) => {
+  const coord: coordinates[] = await getCoordinates(city);
+  console.log(coord);
+  if (!coord.length) return;
+  const [coordinates] = coord;
+  return getWeather({lat: coordinates.lat, lon: coordinates.lon});
+};
+
 function App() {
   const [city, setCity] = useState('');
-  const [coord, setCoord] = useState({lat: 0, lon: 0, success: false});
   const [forecast, setForecast] = useState<CityForecast | undefined>();
   const [currentForecast, setCurrentForecast] = useState<
     DisplayForecast | undefined
   >();
 
-  const {data} = useQuery({
-    queryKey: ['coordinates', city],
-    queryFn: () => getCoordinates(city),
-    enabled: !!city,
+  const {data: weather} = useQuery({
+    queryKey: ['city', city],
+    queryFn: () => getWeatherForecast(city),
+    enabled: Boolean(city),
   });
 
-  useEffect(() => {
-    if (!data?.length) return;
-    const [result] = data;
-    setCoord({lat: result.lat, lon: result.lon, success: true});
-  }, [data]);
-
-  const {data: weather, status} = useQuery({
-    queryKey: ['weather', coord.lat, coord.lon],
-    queryFn: () => getWeather({lon: coord.lon, lat: coord.lat}),
-    enabled: !!coord.success,
-  });
-
-  useEffect(() => {
-    if (status === 'success') {
-      setCoord((prev) => ({...prev, success: false}));
-    }
-  }, [status]);
+  console.log('city', city, 'weather', weather);
 
   useEffect(() => {
     if (!weather) return;

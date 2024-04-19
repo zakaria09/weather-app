@@ -25,6 +25,7 @@ export default function WeatherForm({
         id='city'
         name='city'
         className='shadow appearance-none border round w-full py-2 px-3 leading-tight'
+        data-testid='city-input'
         onChange={formik.handleChange}
         value={formik.values.city}
         placeholder='London....'

@@ -18,7 +18,9 @@ export default function Weather({weather, forecast}: Props) {
   return (
     <div className='shadow rounded p-8 max-w-md'>
       <div className='flex flex-col items-start'>
-        <h1 className='text-2xl font-semibold'>{weather.city}</h1>
+        <h1 data-testid='city' className='text-2xl font-semibold'>
+          {weather.city}
+        </h1>
         <span className='text-md font-semibold text-gray-600'>
           {weather.country}
         </span>

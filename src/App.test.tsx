@@ -1,20 +1,35 @@
-import {render} from '@testing-library/react';
 import App from './App';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {renderWithClient} from './tests/utils';
+import userEvent from '@testing-library/user-event';
+import {screen} from '@testing-library/react';
+import {setupServer} from 'msw/node';
+import {HttpResponse, http} from 'msw';
 
-const queryclient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-    },
-  },
-});
+const server = setupServer(
+  ...[
+    http.get('http://api.openweathermap.org/geo/1.0/*', () => {
+      return HttpResponse.json({
+        name: 'Leeds',
+        lat: 53,
+        lon: -1,
+        country: 'GB',
+        state: 'England',
+      });
+    }),
+  ]
+);
 
-it('should pass', () => {
-  render(
-    <QueryClientProvider client={queryclient}>
-      <App />
-    </QueryClientProvider>
-  );
-  expect(true).toBe(true);
+describe('Form functionality', () => {
+  beforeEach(() => {
+    server.listen();
+  });
+  it('should pass', async () => {
+    renderWithClient(<App />);
+    const user = userEvent.setup();
+    const input = await screen.getByTestId('city-input');
+    await user.type(input, 'la');
+    await user.click(screen.getByRole('button', {name: /get weather/i}));
+    const cityName = await screen.findByTestId('city');
+    expect(cityName).toBeInTheDocument();
+  });
 });
