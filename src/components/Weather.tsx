@@ -8,6 +8,7 @@ type Props = {
 };
 
 export default function Weather({weather, forecast}: Props) {
+  console.log('weather ->', weather.forecast)
   const showForecast = (date: string) => {
     forecast({
       city: weather.city,
@@ -33,7 +34,7 @@ export default function Weather({weather, forecast}: Props) {
               className='cursor-pointer text-blue-900 hover:text-blue-600 mb-2 hover:underline'
               onClick={() => showForecast(date)}
             >
-              {format(new Date(date), 'EEE')}
+              {format(new Date(date), 'EEEE')}
             </button>
           </li>
         ))}
