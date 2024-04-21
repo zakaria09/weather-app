@@ -8,17 +8,21 @@ export const handlers = [
   http.get('http://api.openweathermap.org/geo/1.0/*', () => {
     return HttpResponse.json([
       {
-        name: 'Leeds',
+        name: 'Los Angeles"',
         lat: 53,
         lon: -1,
-        country: 'GB',
-        state: 'England',
+        country: "US",
+        state: "California",
       },
     ]);
   }),
-  http.get('https://api.openweathermap.org/data/2.5/forecast/*', () => {
+  http.get('https://api.openweathermap.org/data/2.5/forecast', () => {
     return HttpResponse.json({
-      cod: '200',
+      city: {
+        name: "Los Angeles",
+        country: "US"
+      },
+      cod: "200",
       message: 0,
       cnt: 40,
       list: responseForecast,

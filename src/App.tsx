@@ -2,23 +2,14 @@ import {useEffect, useState} from 'react';
 import './App.css';
 import WeatherForm from './components/WeatherForm';
 import {useQuery} from '@tanstack/react-query';
-import {getCoordinates, getWeather} from './api/weather';
-import {isSameDay, parseISO} from 'date-fns';
 import {
   CityForecast,
   DisplayForecast,
-  coordinates,
 } from './types/weather.types';
 import Weather from './components/Weather';
 import WeeklyForecast from './components/Forecast';
-
-const getWeatherForecast = async (city: string) => {
-  const coord: coordinates[] = await getCoordinates(city);
-  console.log(coord);
-  if (!coord.length) return;
-  const [coordinates] = coord;
-  return getWeather({lat: coordinates.lat, lon: coordinates.lon});
-};
+import { formatWeather, groupForecasts } from './utils/utils';
+import { getWeatherForecast } from './api/weather';
 
 function App() {
   const [city, setCity] = useState('');
@@ -33,35 +24,11 @@ function App() {
     enabled: Boolean(city),
   });
 
-  console.log('city', city, 'weather', weather);
-
   useEffect(() => {
     if (!weather) return;
-    const days = weather.list.map((data) => ({
-      dateTime: parseISO(data.dt_txt.replace(' ', 'T')),
-      temp: Math.round(data.main.temp),
-      weather: {
-        icon: data.weather[0].main,
-        description: data.weather[0].description,
-      },
-    }));
+    const days = formatWeather(weather);
 
-    const forecast: any = {};
-
-    days.reduce((prev, current) => {
-      if (isSameDay(new Date(prev.dateTime), new Date(current.dateTime))) {
-        const {dateTime}: {dateTime: Date} = current;
-        const dateKey = new Date(
-          dateTime.getFullYear(),
-          dateTime.getMonth(),
-          dateTime.getDate()
-        ).toUTCString();
-        forecast[dateKey] = forecast[dateKey]
-          ? [...forecast[dateKey], current]
-          : [current];
-      }
-      return current;
-    });
+    const forecast = groupForecasts(days);
 
     const cityForecast: CityForecast = {
       city: weather.city.name,

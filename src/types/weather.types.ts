@@ -1,9 +1,11 @@
 export interface CityForecast {
   city: string;
   country: string;
-  forecast: {
-    [date: string]: Forecast[];
-  };
+  forecast: GroupedForecast;
+}
+
+export interface GroupedForecast {
+  [date: string]: Forecast[];
 }
 
 export interface Forecast {
@@ -18,7 +20,7 @@ export interface Forecast {
 export interface DisplayForecast {
   city: string;
   date: string;
-  forecast: Forecast[];
+  forecast: GroupedForecast[];
 }
 
 export type Icons =
