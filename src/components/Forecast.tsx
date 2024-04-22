@@ -8,6 +8,7 @@ type Props = {
 };
 
 export default function WeeklyForecast({forecast}: Props) {
+  console.log(forecast);
   return (
     <div>
       <div className='flex flex-col items-start'>

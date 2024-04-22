@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function Weather({weather, forecast}: Props) {
-  console.log('weather ->', weather.forecast)
   const showForecast = (date: string) => {
     forecast({
       city: weather.city,
@@ -22,7 +21,10 @@ export default function Weather({weather, forecast}: Props) {
         <h1 data-testid='city' className='text-2xl font-semibold'>
           {weather.city}
         </h1>
-        <span className='text-md font-semibold text-gray-600'>
+        <span
+          data-testid='country'
+          className='text-md font-semibold text-gray-600'
+        >
           {weather.country}
         </span>
       </div>
