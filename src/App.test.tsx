@@ -37,4 +37,6 @@ describe('App.tsx', () => {
     const [temp] = await screen.getAllByText('10°');
     expect(temp).toBeInTheDocument();
   });
+
+  describe('', () => {});
 });
