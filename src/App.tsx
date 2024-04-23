@@ -1,12 +1,13 @@
 import {useEffect, useState} from 'react';
 import './App.css';
 import WeatherForm from './components/WeatherForm';
-import {useQuery} from '@tanstack/react-query';
-import {CityForecast, DisplayForecast} from './types/weather.types';
+import {CityForecast, DisplayForecast, coords} from './types/weather.types';
 import Weather from './components/Weather';
 import WeeklyForecast from './components/Forecast';
 import {formatWeather, groupForecasts} from './utils/utils';
-import {getWeatherForecast} from './api/weather';
+import {useWeather} from './hooks/useWeather';
+import LoadingSpinner from './components/LoadingSpinner';
+import Warning from './components/banners/Warning';
 
 function App() {
   const [city, setCity] = useState('');
@@ -14,16 +15,12 @@ function App() {
   const [currentForecast, setCurrentForecast] = useState<
     DisplayForecast | undefined
   >();
+  const [coords, setCoords] = useState<coords | undefined>();
 
-  const {
-    data: weather,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ['city', city],
-    queryFn: () => getWeatherForecast(city),
-    enabled: Boolean(city),
-  });
+  const {weather, error, isLoading} = useWeather(
+    {city, coordinate: {lon: coords?.lon, lat: coords?.lat}},
+    Boolean(city || coords)
+  );
 
   useEffect(() => {
     if (!weather) return;
@@ -40,17 +37,17 @@ function App() {
     setForecast(cityForecast);
   }, [weather]);
 
+  const handlePosition = (position: coords) => {
+    setCity('');
+    setCoords(position);
+  };
+
   const renderForecast = () => {
-    if (error)
-      return (
-        <div className='px-8 border-4 border-red-400 border-solid p-8 rounded-lg bg-red-50'>
-          <p className='text-xl font-semibold'>Oops somethin went wrong!</p>
-        </div>
-      );
+    if (error) return <Warning msg='Oops somethin went wrong!' />;
     else if (isLoading)
       return (
         <div className='px-8'>
-          <div className='h-12 w-12 animate-spin rounded-full border-b-4 border-current' />
+          <LoadingSpinner />
         </div>
       );
     else
@@ -71,7 +68,10 @@ function App() {
   return (
     <div className='container mx-auto p-4'>
       <div className='max-w-lg'>
-        <WeatherForm onCity={setCity} />
+        <WeatherForm
+          onCity={setCity}
+          onLocation={(pos) => handlePosition(pos)}
+        />
       </div>
       <div className='my-10'>{renderForecast()}</div>
     </div>

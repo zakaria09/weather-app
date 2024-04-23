@@ -19,7 +19,9 @@ export default function WeeklyForecast({data}: Props) {
       {data.forecast[data.date].map((weather, i) => (
         <div key={i}>
           <div>
-            <p className='text-sm'>{format(weather.dateTime, 'p')}</p>
+            <p className='text-sm text-center'>
+              {format(weather.dateTime, 'p')}
+            </p>
           </div>
           <div className='flex justify-between content-center px-6 py-4 border-solid border-2 border-slate-300 rounded my-2'>
             <div className='flex self-center'>

@@ -40,3 +40,8 @@ export interface coordinates {
   country: string;
   state: string;
 }
+
+export type coords = {
+  lon?: number;
+  lat?: number;
+};
