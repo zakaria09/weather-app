@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 import {setupServer} from 'msw/node';
-import {handlers} from './tests/utils';
+import {handlers} from './utils';
 
 export const server = setupServer(...handlers);
 

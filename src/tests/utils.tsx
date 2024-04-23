@@ -2,7 +2,7 @@ import {render} from '@testing-library/react';
 import {HttpResponse, http} from 'msw';
 import * as React from 'react';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {responseForecast} from '../mockData/mockForecast';
+import {responseForecast} from './mockForecast';
 
 export const handlers = [
   http.get('http://api.openweathermap.org/geo/1.0/*', () => {
@@ -11,18 +11,18 @@ export const handlers = [
         name: 'Los Angeles"',
         lat: 53,
         lon: -1,
-        country: "US",
-        state: "California",
+        country: 'US',
+        state: 'California',
       },
     ]);
   }),
   http.get('https://api.openweathermap.org/data/2.5/forecast', () => {
     return HttpResponse.json({
       city: {
-        name: "Los Angeles",
-        country: "US"
+        name: 'Los Angeles',
+        country: 'US',
       },
-      cod: "200",
+      cod: '200',
       message: 0,
       cnt: 40,
       list: responseForecast,
@@ -53,13 +53,4 @@ export function renderWithClient(ui: React.ReactElement) {
         </QueryClientProvider>
       ),
   };
-}
-
-export function createWrapper() {
-  const testQueryClient = createTestQueryClient();
-  return ({children}: {children: React.ReactNode}) => (
-    <QueryClientProvider client={testQueryClient}>
-      {children}
-    </QueryClientProvider>
-  );
 }
