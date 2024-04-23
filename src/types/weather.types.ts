@@ -8,7 +8,7 @@ export interface BaseForecast {
 }
 
 export interface GroupedForecast {
-  [date: string]: Forecast;
+  [date: string]: Forecast[];
 }
 
 export interface Forecast {

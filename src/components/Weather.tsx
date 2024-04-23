@@ -12,7 +12,7 @@ export default function Weather({weather, forecast}: Props) {
     forecast({
       city: weather.city,
       date: date,
-      forecast: weather.forecast[date],
+      forecast: {[date]: weather.forecast[date]},
     });
   };
   return (

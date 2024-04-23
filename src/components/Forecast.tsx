@@ -4,20 +4,19 @@ import {format} from 'date-fns';
 import WeatherIcons from './WeatherIcons';
 
 type Props = {
-  forecast: DisplayForecast;
+  data: DisplayForecast;
 };
 
-export default function WeeklyForecast({forecast}: Props) {
-  console.log(forecast);
+export default function WeeklyForecast({data}: Props) {
   return (
     <div>
       <div className='flex flex-col items-start'>
-        <h1 className='text-3xl font-bold'>{forecast.city}</h1>
+        <h1 className='text-3xl font-bold'>{data.city}</h1>
         <span className='text-md font-semibold text-gray-600'>
-          {format(new Date(forecast.date), 'EEEE')}
+          {format(new Date(data.date), 'EEEE')}
         </span>
       </div>
-      {forecast.forecast.map((weather, i) => (
+      {data.forecast[data.date].map((weather, i) => (
         <div key={i}>
           <div>
             <p className='text-sm'>{format(weather.dateTime, 'p')}</p>
