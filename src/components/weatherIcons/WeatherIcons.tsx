@@ -1,13 +1,13 @@
 import React from 'react';
-import {Icons} from '../types/weather.types';
-import rainy from '../assets/icons/rainy-7.svg';
-import drizzle from '../assets/icons/rainy-drizzle.svg';
-import clouds from '../assets/icons/cloudy.svg';
-import snow from '../assets/icons/snowy-6.svg';
-import sun from '../assets/icons/sunny.svg';
-import thunder from '../assets/icons/thunder.svg';
+import rainy from '../../assets/icons/rainy-7.svg';
+import drizzle from '../../assets/icons/rainy-drizzle.svg';
+import clouds from '../../assets/icons/cloudy.svg';
+import snow from '../../assets/icons/snowy-6.svg';
+import sun from '../../assets/icons/sunny.svg';
+import thunder from '../../assets/icons/thunder.svg';
 import {FaSmog} from 'react-icons/fa';
 import {BiSolidMessageAltError} from 'react-icons/bi';
+import {Icons} from '../../types/weather.types';
 
 export default function WeatherIcons({weather}: {weather: Icons}) {
   if (weather === 'Rain') return <img className='w-24' src={rainy} />;

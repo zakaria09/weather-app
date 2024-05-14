@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
 import './App.css';
-import WeatherForm from './components/WeatherForm';
+import WeatherForm from './components/weatherForm/WeatherForm';
 import {CityForecast, DisplayForecast, coords} from './types/weather.types';
-import Weather from './components/Weather';
-import WeeklyForecast from './components/Forecast';
+import Weather from './components/weatherList/WeatherList';
 import {formatWeather, groupForecasts} from './utils/utils';
 import {useWeather} from './hooks/useWeather';
-import LoadingSpinner from './components/LoadingSpinner';
 import Warning from './components/banners/Warning';
+import LoadingSpinner from './components/loaders/LoadingSpinner';
+import WeeklyForecast from './components/forecast/Forecast';
 
 function App() {
   const [city, setCity] = useState('');

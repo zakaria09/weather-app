@@ -1,5 +1,5 @@
 import React from 'react';
-import {CityForecast, DisplayForecast} from '../types/weather.types';
+import {CityForecast, DisplayForecast} from '../../types/weather.types';
 import {format} from 'date-fns';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   forecast: (forecast: DisplayForecast) => void;
 };
 
-export default function Weather({weather, forecast}: Props) {
+export default function WeatherList({weather, forecast}: Props) {
   const showForecast = (date: string) => {
     forecast({
       city: weather.city,

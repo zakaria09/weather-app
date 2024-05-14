@@ -1,8 +1,8 @@
 import {useFormik} from 'formik';
 import React, {useState} from 'react';
-import {coords} from '../types/weather.types';
-import LoadingSpinner from './LoadingSpinner';
-import Warning from './banners/Warning';
+import {coords} from '../../types/weather.types';
+import Warning from '../banners/Warning';
+import LoadingSpinner from '../loaders/LoadingSpinner';
 
 type Props = {
   onCity: (city: string) => void;

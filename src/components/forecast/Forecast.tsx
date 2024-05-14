@@ -1,7 +1,6 @@
 import React from 'react';
-import {DisplayForecast} from '../types/weather.types';
 import {format} from 'date-fns';
-import WeatherIcons from './WeatherIcons';
+import WeatherIcons from '../weatherIcons/WeatherIcons';
 
 type Props = {
   data: DisplayForecast;

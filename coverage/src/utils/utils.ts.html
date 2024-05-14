@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Forecast.tsx</title>
+    <title>Code coverage report for src/utils/utils.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Forecast.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/utils</a> utils.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>34/34</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>34/34</span>
             </div>
         
             
@@ -96,82 +96,73 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import {DisplayForecast} from '../types/weather.types';
-import {format} from 'date-fns';
-import WeatherIcons from './WeatherIcons';
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span></td><td class="text"><pre class="prettyprint lang-js">import { isSameDay, parseISO } from "date-fns";
+import { OpenWeatherMap } from "../types/openWeather.types";
+import { Forecast, GroupedForecast } from "../types/weather.types";
 &nbsp;
-type Props = {
-  data: DisplayForecast;
-};
+export const formatWeather = (weather: OpenWeatherMap) =&gt;
+  weather.list.map((data) =&gt; ({
+    dateTime: parseISO(data.dt_txt.replace(" ", "T")),
+    temp: Math.round(data.main.temp),
+    weather: {
+      icon: data.weather[0].main,
+      description: data.weather[0].description,
+    },
+  }));
 &nbsp;
-export default function WeeklyForecast({data}: Props) {
-  return (
-    &lt;div&gt;
-      &lt;div className='flex flex-col items-start'&gt;
-        &lt;h1 className='text-3xl font-bold'&gt;{data.city}&lt;/h1&gt;
-        &lt;span className='text-md font-semibold text-gray-600'&gt;
-          {format(new Date(data.date), 'EEEE')}
-        &lt;/span&gt;
-      &lt;/div&gt;
-      {data.forecast[data.date].map((weather, i) =&gt; (
-        &lt;div key={i}&gt;
-          &lt;div&gt;
-            &lt;p className='text-sm text-center'&gt;
-              {format(weather.dateTime, 'p')}
-            &lt;/p&gt;
-          &lt;/div&gt;
-          &lt;div className='flex justify-between content-center px-6 py-4 border-solid border-2 border-slate-300 rounded my-2'&gt;
-            &lt;div className='flex self-center'&gt;
-              &lt;p className='text-2xl font-semibold'&gt;{weather.temp}&amp;deg;&lt;/p&gt;
-            &lt;/div&gt;
-            &lt;WeatherIcons weather={weather.weather.icon} /&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      ))}
-    &lt;/div&gt;
-  );
-}
-&nbsp;</pre></td></tr></table></pre>
+export const groupForecasts = (weather: Forecast[]) =&gt; {
+  const forecast: GroupedForecast = {};
+&nbsp;
+  weather.reduce((prev, current) =&gt; {
+    if (isSameDay(new Date(prev.dateTime), new Date(current.dateTime))) {
+      const { dateTime }: { dateTime: Date } = current;
+      const dateKey = new Date(
+        dateTime.getFullYear(),
+        dateTime.getMonth(),
+        dateTime.getDate()
+      ).toUTCString();
+      forecast[dateKey] = forecast[dateKey]
+        ? [...forecast[dateKey], current]
+        : [current];
+    }
+    return current;
+  });
+&nbsp;
+  return forecast;
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
