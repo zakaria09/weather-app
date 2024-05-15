@@ -114,3 +114,40 @@ export const responseForecast = [
     dt_txt: '2024-04-16 21:00:00',
   },
 ];
+
+export const Response2Forecast = [
+  {
+    dt: 1715709600,
+    main: {
+      temp: 17.11,
+      feels_like: 16.68,
+      temp_min: 17.11,
+      temp_max: 20.4,
+      pressure: 1015,
+      sea_level: 1015,
+      grnd_level: 994,
+      humidity: 69,
+      temp_kf: -3.29,
+    },
+    weather: [
+      {
+        main: 'Clouds',
+        description: 'Light rain',
+      },
+    ],
+    clouds: {
+      all: 67,
+    },
+    wind: {
+      speed: 2.8,
+      deg: 177,
+      gust: 1.89,
+    },
+    visibility: 10000,
+    pop: 0,
+    sys: {
+      pod: 'd',
+    },
+    dt_txt: '2024-05-14 18:00:00',
+  },
+];

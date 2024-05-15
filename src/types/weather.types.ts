@@ -31,7 +31,8 @@ export type Icons =
   | 'Snow'
   | 'Atmosphere'
   | 'Clear'
-  | 'Clouds';
+  | 'Clouds'
+  | string;
 
 export interface coordinates {
   name: string;
